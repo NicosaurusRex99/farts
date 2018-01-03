@@ -1,0 +1,14 @@
+{
+"fartsound": { 
+        "category": "player", 
+        "sounds": ["farts:fartsound"], 
+        "subtitle": "farts.subtitle.fartsound" ,
+        "stream": true
+    },
+    "fartsound2": { 
+        "category": "player", 
+        "sounds": ["farts:fartsound2"], 
+        "subtitle": "farts.subtitle.fartsound" ,
+        "stream": true
+    }
+}

@@ -1,0 +1,16 @@
+[
+{
+  "modid": "farts",
+  "name": "Farts",
+  "description": "Hold 'F' in chat",
+  "version": "1.12.2.0",
+  "mcversion": "1.12.2",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["NicosaurusRex99"],
+  "credits": "",
+  "logoFile": "farts:logo.png",
+  "screenshots": [],
+  "dependencies": []
+}
+]
