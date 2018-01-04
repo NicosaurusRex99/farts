@@ -1,10 +1,6 @@
 package naturix.farts;
 
-import naturix.farts.networking.FartKeyBindings;
 import naturix.farts.proxy.CommonProxy;
-import naturix.farts.utils.ModSounds;
-import naturix.farts.utils.SoundHandler;
-import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -29,12 +25,12 @@ public class FartsMod
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
-    	FartKeyBindings.init();
+
     }
     
     @EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
-    	
+ 
 	}
 }

@@ -1,7 +1,7 @@
 {
-"fartsound": { 
+"fartsound1": { 
         "category": "player", 
-        "sounds": ["farts:fartsound"], 
+        "sounds": ["farts:fartsound1"], 
         "subtitle": "farts.subtitle.fartsound" ,
         "stream": true
     },
