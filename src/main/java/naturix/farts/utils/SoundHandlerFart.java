@@ -21,7 +21,6 @@ public class SoundHandlerFart {
 	{
 		fart_1 = registerSound("farts:fartsound1");
 		fart_2 = registerSound("farts:fartsound2");
-
 	}
 	
 	public static SoundEvent getRandomFart(Random rand) 

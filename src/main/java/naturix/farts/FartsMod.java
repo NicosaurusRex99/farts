@@ -16,6 +16,8 @@ public class FartsMod
     
     @SidedProxy(serverSide = "naturix.farts.proxy.CommonProxy", clientSide = "naturix.farts.proxy.ClientProxy")
     public static CommonProxy proxy;
+
+    
     @EventHandler
     public void PreInit(FMLPreInitializationEvent event)
     {
@@ -25,7 +27,7 @@ public class FartsMod
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
-
+    	proxy.init(event);
     }
     
     @EventHandler
