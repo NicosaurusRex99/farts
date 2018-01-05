@@ -1,5 +1,6 @@
 package naturix.farts;
 
+import naturix.farts.network.PacketHandler;
 import naturix.farts.proxy.CommonProxy;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -16,6 +17,7 @@ public class FartsMod
     
     @SidedProxy(serverSide = "naturix.farts.proxy.CommonProxy", clientSide = "naturix.farts.proxy.ClientProxy")
     public static CommonProxy proxy;
+    public static PacketHandler packetHandler;
 
     
     @EventHandler

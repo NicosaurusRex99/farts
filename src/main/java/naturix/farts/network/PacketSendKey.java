@@ -23,13 +23,16 @@ public class PacketSendKey implements IMessage {
 
     @Override
     public void fromBytes(ByteBuf buf) {
+    	
     }
 
     @Override
     public void toBytes(ByteBuf buf) {
+    	
     }
 
     public PacketSendKey() {
+    	
     }
 
     public static class Handler implements IMessageHandler<PacketSendKey, IMessage> {
@@ -39,13 +42,14 @@ public class PacketSendKey implements IMessage {
 		@Override
         public IMessage onMessage(PacketSendKey message, MessageContext ctx) {
         	EntityPlayerMP serverPlayer = ctx.getServerHandler().player;
-        		serverPlayer.playSound(SoundHandlerFart.fart_1, 1, 1);
+        		serverPlayer.playSound(SoundHandlerFart.fart_1, 5f, 1f);
             return null;
         }
 
         private void handle(PacketSendKey message, MessageContext ctx) {
         	if(KeyBindings.fartsKey.isPressed()) {
         		this.onMessage(message, ctx);
+        		System.out.println("fart key works");
         	}
         }
         }
