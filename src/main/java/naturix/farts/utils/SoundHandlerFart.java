@@ -25,7 +25,7 @@ public class SoundHandlerFart {
 	
 	public static SoundEvent getRandomFart(Random rand) 
 	{
-		int num = rand.nextInt(3);
+		int num = rand.nextInt(2);
 		switch(num)
 		{
 		case 1:

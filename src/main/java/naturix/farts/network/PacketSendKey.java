@@ -3,6 +3,7 @@ package naturix.farts.network;
 import java.util.Random;
 
 import io.netty.buffer.ByteBuf;
+import naturix.farts.utils.KeyBindings;
 import naturix.farts.utils.SoundHandlerFart;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
@@ -38,11 +39,14 @@ public class PacketSendKey implements IMessage {
 		@Override
         public IMessage onMessage(PacketSendKey message, MessageContext ctx) {
         	EntityPlayerMP serverPlayer = ctx.getServerHandler().player;
-        		serverPlayer.playSound(SoundHandlerFart.getRandomFart(rand), 1, 1);
+        		serverPlayer.playSound(SoundHandlerFart.fart_1, 1, 1);
             return null;
         }
 
         private void handle(PacketSendKey message, MessageContext ctx) {
-}
+        	if(KeyBindings.fartsKey.isPressed()) {
+        		this.onMessage(message, ctx);
+        	}
+        }
         }
     }
