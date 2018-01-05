@@ -20,6 +20,10 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
 public class PacketSendKey implements IMessage {
+	 private int toSend;
+	  public PacketSendKey(int toSend) {
+	    this.toSend = toSend;}
+
 
     @Override
     public void fromBytes(ByteBuf buf) {
@@ -38,14 +42,16 @@ public class PacketSendKey implements IMessage {
     public static class Handler implements IMessageHandler<PacketSendKey, IMessage> {
         private ByteBuf buf;
 		private Random rand;
-
+		
 		@Override
         public IMessage onMessage(PacketSendKey message, MessageContext ctx) {
-        	EntityPlayerMP serverPlayer = ctx.getServerHandler().player;
+			EntityPlayerMP serverPlayer = ctx.getServerHandler().player;
+			int amount = message.toSend;
+			serverPlayer.getServerWorld().addScheduledTask(null); {
         		serverPlayer.playSound(SoundHandlerFart.fart_1, 5f, 1f);
             return null;
         }
-
+		}
         private void handle(PacketSendKey message, MessageContext ctx) {
         	if(KeyBindings.fartsKey.isPressed()) {
         		this.onMessage(message, ctx);
