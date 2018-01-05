@@ -13,7 +13,7 @@ public class KeyBindings {
     public static KeyBinding fartsKey;
 
     public static void init() {
-        fartsKey = new KeyBinding("key.fart", Keyboard.KEY_T, "key.categories.farts");
+        fartsKey = new KeyBinding("key.fart", Keyboard.KEY_F4, "key.categories.farts");
         ClientRegistry.registerKeyBinding(fartsKey);
     }
 }

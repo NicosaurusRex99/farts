@@ -11,7 +11,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 public class FartsMod
 {
     public static final String MODID = "farts";
-    public static final String VERSION = "1.12.2.0";
+    public static final String VERSION = "1.12.2.1";
     public static final String NAME = "Farts";
     
     @SidedProxy(serverSide = "naturix.farts.proxy.CommonProxy", clientSide = "naturix.farts.proxy.ClientProxy")
