@@ -18,7 +18,7 @@ public class CommonProxy {
     }
 
     public void init(FMLInitializationEvent e) {
-    	
+    	PacketHandler.registerMessages();
     	SoundHandlerFart.register();
 
     }

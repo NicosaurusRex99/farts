@@ -18,6 +18,7 @@ public class PacketSendKey implements IMessage {
 	    this.toSend = toSend;}
 
 
+
     @Override
     public void fromBytes(ByteBuf buf) {
     	
@@ -44,13 +45,16 @@ public class PacketSendKey implements IMessage {
 			serverPlayer.getServerWorld().addScheduledTask(() -> {
 				if(KeyBindings.fartsKey.isPressed()) {
 			      serverPlayer.playSound(SoundHandlerFart.fart_1, 5f, 1f);
+			      System.out.print("farting");
 			    }});
 			return message;
 		}
         private void handle(PacketSendKey message, MessageContext ctx) {
+        	EntityPlayerMP serverPlayer = ctx.getServerHandler().player;
         	if(KeyBindings.fartsKey.isPressed()) {
         		this.onMessage(message, ctx);
         		System.out.println("fart key works");
+        		 serverPlayer.playSound(SoundHandlerFart.fart_1, 5f, 1f);
         	}
         }
         }

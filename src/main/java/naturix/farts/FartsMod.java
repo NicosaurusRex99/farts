@@ -24,6 +24,7 @@ public class FartsMod
     public void PreInit(FMLPreInitializationEvent event)
     {
     	proxy.preInit(event);
+    	packetHandler.registerMessages("farts");
     }
     
     @EventHandler
