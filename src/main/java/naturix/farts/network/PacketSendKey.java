@@ -13,7 +13,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
 public class PacketSendKey implements IMessage {
-	 private int toSend = 5;
+	 private int toSend;
 	  public PacketSendKey(int toSend) {
 	    this.toSend = toSend;}
 
@@ -43,7 +43,7 @@ public class PacketSendKey implements IMessage {
 			int volume = message.toSend;
 			serverPlayer.getServerWorld().addScheduledTask(() -> {
 				if(KeyBindings.fartsKey.isPressed()) {
-			      serverPlayer.playSound(SoundHandlerFart.fart_1, volume, 1f);
+			      serverPlayer.playSound(SoundHandlerFart.fart_1, 5f, 1f);
 			    }});
 			return message;
 		}
