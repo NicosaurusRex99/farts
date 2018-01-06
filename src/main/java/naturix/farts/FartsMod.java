@@ -1,12 +1,14 @@
 package naturix.farts;
 
 import naturix.farts.network.PacketHandler;
+import naturix.farts.network.PacketSendKey;
 import naturix.farts.proxy.CommonProxy;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.relauncher.Side;
 
 @Mod(modid = FartsMod.MODID, version = FartsMod.VERSION, name = FartsMod.NAME)
 public class FartsMod
@@ -17,15 +19,13 @@ public class FartsMod
     
     @SidedProxy(serverSide = "naturix.farts.proxy.CommonProxy", clientSide = "naturix.farts.proxy.ClientProxy")
     public static CommonProxy proxy;
-    public static PacketHandler packetHandler;
-
+    private static int packetId = 0;
     
     @EventHandler
     public void PreInit(FMLPreInitializationEvent event)
     {
     	proxy.preInit(event);
-    	packetHandler.registerMessages("farts");
-    }
+    	}
     
     @EventHandler
     public void init(FMLInitializationEvent event)
