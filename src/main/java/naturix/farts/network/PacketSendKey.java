@@ -42,8 +42,9 @@ public class PacketSendKey implements IMessage {
 			EntityPlayerMP serverPlayer = ctx.getServerHandler().player;
 			int volume = message.toSend;
 			serverPlayer.getServerWorld().addScheduledTask(() -> {
+				if(KeyBindings.fartsKey.isPressed()) {
 			      serverPlayer.playSound(SoundHandlerFart.fart_1, volume, 1f);
-			    });
+			    }});
 			return message;
 		}
         private void handle(PacketSendKey message, MessageContext ctx) {
