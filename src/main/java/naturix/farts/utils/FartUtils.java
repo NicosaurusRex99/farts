@@ -12,7 +12,7 @@ import net.minecraft.util.SoundEvent;
 public class FartUtils {
 
 	public static SoundEvent getRandomFart(Random rand) {
-		int num = rand.nextInt(2);
+		int num = ModSounds.getList().size();
 		return ModSounds.getList().get(num);
 	}
 
