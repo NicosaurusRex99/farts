@@ -10,5 +10,71 @@
         "sounds": ["farts:fartsound2"], 
         "subtitle": "farts.subtitle.fartsound" ,
         "stream": true
+    },
+    "fartsound3": { 
+        "category": "player", 
+        "sounds": ["farts:fartsound3"], 
+        "subtitle": "farts.subtitle.fartsound" ,
+        "stream": true
+    },
+    "fartsound4": { 
+        "category": "player", 
+        "sounds": ["farts:fartsound4"], 
+        "subtitle": "farts.subtitle.fartsound" ,
+        "stream": true
+    },
+    "fartsound5": { 
+        "category": "player", 
+        "sounds": ["farts:fartsound5"], 
+        "subtitle": "farts.subtitle.fartsound" ,
+        "stream": true
+    },
+    "fartsound6": { 
+        "category": "player", 
+        "sounds": ["farts:fartsound6"], 
+        "subtitle": "farts.subtitle.fartsound" ,
+        "stream": true
+    },
+    "fartsound7": { 
+        "category": "player", 
+        "sounds": ["farts:fartsound7"], 
+        "subtitle": "farts.subtitle.fartsound" ,
+        "stream": true
+    },
+    "fartsound8": { 
+        "category": "player", 
+        "sounds": ["farts:fartsound8"], 
+        "subtitle": "farts.subtitle.fartsound" ,
+        "stream": true
+    },
+    "fartsound9": { 
+        "category": "player", 
+        "sounds": ["farts:fartsound9"], 
+        "subtitle": "farts.subtitle.fartsound" ,
+        "stream": true
+    },
+    "fartsound10": { 
+        "category": "player", 
+        "sounds": ["farts:fartsound10"], 
+        "subtitle": "farts.subtitle.fartsound" ,
+        "stream": true
+    },
+    "fartsound11": { 
+        "category": "player", 
+        "sounds": ["farts:fartsound11"], 
+        "subtitle": "farts.subtitle.fartsound" ,
+        "stream": true
+    },
+    "fartsound12": { 
+        "category": "player", 
+        "sounds": ["farts:fartsound12"], 
+        "subtitle": "farts.subtitle.fartsound" ,
+        "stream": true
+    },
+    "fartsound13": { 
+        "category": "player", 
+        "sounds": ["farts:fartsound13"], 
+        "subtitle": "farts.subtitle.fartsound" ,
+        "stream": true
     }
 }

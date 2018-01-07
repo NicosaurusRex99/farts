@@ -19,6 +19,17 @@ public class ModSounds {
 		if (FARTS_LIST.isEmpty()) {
 			registerSound("fartsound1");
 			registerSound("fartsound2");
+			registerSound("fartsound3");
+			registerSound("fartsound4");
+			registerSound("fartsound5");
+			registerSound("fartsound6");
+			registerSound("fartsound7");
+			registerSound("fartsound8");
+			registerSound("fartsound9");
+			registerSound("fartsound10");
+			registerSound("fartsound11");
+			registerSound("fartsound12");
+			registerSound("fartsound13");
 		}
 		return FARTS_LIST;
 	}

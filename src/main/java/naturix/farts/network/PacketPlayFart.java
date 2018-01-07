@@ -28,7 +28,7 @@ public class PacketPlayFart implements IMessage {
 		public IMessage onMessage(PacketPlayFart message, MessageContext ctx) {
 			EntityPlayerMP player = ctx.getServerHandler().player;
 			World world = player.getEntityWorld();
-			world.playSound(null, player.getPosition(), FartUtils.getRandomFart(world.rand), SoundCategory.PLAYERS, 0.2F, 1.0F);
+			world.playSound(null, player.getPosition(), FartUtils.getRandomFart(world.rand), SoundCategory.PLAYERS, 0.8F, 1.0F);
 			return null;
 		}
 
