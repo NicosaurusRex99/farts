@@ -30,6 +30,29 @@ public class ModSounds {
 			registerSound("fartsound11");
 			registerSound("fartsound12");
 			registerSound("fartsound13");
+			registerSound("fartsound14");
+			registerSound("fartsound15");
+			registerSound("fartsound16");
+			registerSound("fartsound17");
+			registerSound("fartsound18");
+			registerSound("fartsound19");
+			registerSound("fartsound20");
+			registerSound("fartsound21");
+			registerSound("fartsound22");
+			registerSound("fartsound23");
+			registerSound("fartsound24");
+			registerSound("fartsound25");
+			registerSound("fartsound26");
+			registerSound("fartsound27");
+			registerSound("fartsound28");
+			registerSound("fartsound29");
+			registerSound("fartsound30");
+			registerSound("fartsound31");
+			registerSound("fartsound32");
+			registerSound("fartsound33");
+			registerSound("fartsound34");
+			registerSound("fartsound35");
+			registerSound("fartsound36");
 		}
 		return FARTS_LIST;
 	}
