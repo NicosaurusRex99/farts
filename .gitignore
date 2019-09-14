@@ -20,12 +20,8 @@ build
 # other
 eclipse
 run
-*.bat
-CREDITS-fml.txt
-forge-1.12.2-14.23.2.2615-changelog.txt
-forge-1.12.2-14.23.1.2584-changelog.txt
-LICENSE-new.txt
-MinecraftForge-Credits.txt
-Paulscode IBXM Library License.txt
-Paulscode SoundSystem CodecIBXM License.txt
-README.txt
+
+# Files from Forge MDK
+forge*changelog.txt
+gradle/wrapper/gradle-wrapper.jar
+gradle/wrapper/gradle-wrapper.properties
