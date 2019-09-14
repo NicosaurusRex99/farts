@@ -1,10 +1,20 @@
 package naturix;
 
+import naturix.init.ModKeyBindings;
+import naturix.init.ModNetworking;
+import naturix.init.ModSounds;
+import naturix.networking.PacketPlayFart;
+import naturix.proxy.ClientProxy;
+import naturix.proxy.IProxy;
+import naturix.proxy.ServerProxy;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.util.SoundEvent;
+import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -27,6 +37,7 @@ public class Main
     public static final String MODID = "farts";
     public static final String VERSION = "1.14.4.0";
     public static final String NAME = "Farts";
+    public static IProxy proxy = DistExecutor.runForDist(() -> () -> new ClientProxy(), () -> () -> new ServerProxy());
 
     public Main() {
         // Register the setup method for modloading
@@ -44,34 +55,26 @@ public class Main
 
     private void setup(final FMLCommonSetupEvent event)
     {
-        // some preinit code
-        LOGGER.info("HELLO FROM PREINIT");
-        LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+        proxy.init();
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
-        // do something that can only be done on the client
-        LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().gameSettings);
+
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event)
     {
-        // some example code to dispatch IMC to another mod
-        InterModComms.sendTo("examplemod", "helloworld", () -> { LOGGER.info("Hello world from the MDK"); return "Hello world";});
+
     }
 
     private void processIMC(final InterModProcessEvent event)
     {
-        // some example code to receive and process InterModComms from other mods
-        LOGGER.info("Got IMC {}", event.getIMCStream().
-                map(m->m.getMessageSupplier().get()).
-                collect(Collectors.toList()));
+
     }
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
     public void onServerStarting(FMLServerStartingEvent event) {
-        // do something when the server starts
-        LOGGER.info("HELLO from server starting");
+
     }
 
     // You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD
@@ -79,9 +82,15 @@ public class Main
     @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
     public static class RegistryEvents {
         @SubscribeEvent
-        public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
-            // register a new block here
-            LOGGER.info("HELLO from Register Block");
+        public void onSoundRegistryReady(final RegistryEvent.Register<SoundEvent> event) {
+            ModSounds.getList().stream().forEach(sound -> event.getRegistry().register(sound));
+        }
+
+        @SubscribeEvent
+        public void onKeyInput(InputEvent.KeyInputEvent event) {
+            if (ModKeyBindings.PLAY_FART.isPressed()) {
+                ModNetworking.sendToServer(new PacketPlayFart());
+            }
         }
     }
 }
