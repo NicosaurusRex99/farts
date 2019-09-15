@@ -1,5 +1,6 @@
 package naturix;
 
+import naturix.init.ModEvents;
 import naturix.init.ModKeyBindings;
 import naturix.init.ModNetworking;
 import naturix.init.ModSounds;
@@ -55,6 +56,7 @@ public class Main
 
     private void setup(final FMLCommonSetupEvent event)
     {
+        ModNetworking.init();
         proxy.init();
     }
 
@@ -75,6 +77,7 @@ public class Main
     @SubscribeEvent
     public void onServerStarting(FMLServerStartingEvent event) {
 
+        ModNetworking.init();
     }
 
     // You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD
@@ -84,13 +87,6 @@ public class Main
         @SubscribeEvent
         public void onSoundRegistryReady(final RegistryEvent.Register<SoundEvent> event) {
             ModSounds.getList().stream().forEach(sound -> event.getRegistry().register(sound));
-        }
-
-        @SubscribeEvent
-        public void onKeyInput(InputEvent.KeyInputEvent event) {
-            if (ModKeyBindings.PLAY_FART.isPressed()) {
-                ModNetworking.sendToServer(new PacketPlayFart());
-            }
         }
     }
 }

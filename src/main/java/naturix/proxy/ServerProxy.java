@@ -8,7 +8,7 @@ public class ServerProxy implements IProxy {
 
     @Override
     public void init() {
-        ModNetworking.register();
+        ModNetworking.init();
     }
 
     @Override

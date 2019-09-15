@@ -1,50 +1,28 @@
 package naturix.init;
 
+import javafx.geometry.Side;
 import naturix.Main;
 import naturix.networking.PacketPlayFart;
-import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.fml.network.NetworkDirection;
-import net.minecraftforge.fml.network.NetworkEvent.Context;
 import net.minecraftforge.fml.network.NetworkRegistry;
 import net.minecraftforge.fml.network.simple.SimpleChannel;
 
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import java.util.function.Supplier;
-
 public class ModNetworking {
-    private static final String PROTOCOL_VERSION = Integer.toString(2);
-    private static short index = 0;
 
-    public static final SimpleChannel HANDLER = NetworkRegistry.ChannelBuilder
-            .named(new ResourceLocation(Main.MODID, "main_network_channel"))
-            .clientAcceptedVersions(PROTOCOL_VERSION::equals)
-            .serverAcceptedVersions(PROTOCOL_VERSION::equals)
-            .networkProtocolVersion(() -> PROTOCOL_VERSION)
-            .simpleChannel();
+    private static int packetId = 0;
+    public static SimpleChannel INSTANCE = NetworkRegistry.newSimpleChannel(new ResourceLocation(Main.MODID, "fart_packet"), () -> "1.0", s -> true, s -> true);
 
-    public static void register() {
-
-        // Both Sides
-        registerMessage(PacketPlayFart.class, PacketPlayFart::encode, PacketPlayFart::decode, PacketPlayFart.Handler::handle);
+    private static int nextID() {
+        return packetId++;
     }
 
-    public static void sendTo(Object msg, ServerPlayerEntity player) {
-        if (!(player instanceof FakePlayer))
-            HANDLER.sendTo(msg, player.connection.netManager, NetworkDirection.PLAY_TO_CLIENT);
+    public static void init() {
+        INSTANCE.registerMessage(nextID(),
+                PacketPlayFart.class,
+                PacketPlayFart::toBytes,
+                PacketPlayFart::new,
+                PacketPlayFart::handle);
     }
 
-    public static void sendToServer(Object msg) {
-        HANDLER.sendToServer(msg);
-    }
-
-    private static <MSG> void registerMessage(Class<MSG> messageType, BiConsumer<MSG, PacketBuffer> encoder, Function<PacketBuffer, MSG> decoder, BiConsumer<MSG, Supplier<Context>> messageConsumer) {
-        HANDLER.registerMessage(index, messageType, encoder, decoder, messageConsumer);
-        index++;
-        if (index > 0xFF)
-            throw new RuntimeException("Too many messages!");
-    }
 }
