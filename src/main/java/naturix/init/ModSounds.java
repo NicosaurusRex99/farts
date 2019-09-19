@@ -14,53 +14,68 @@ import net.minecraft.util.SoundEvent;
 public class ModSounds {
 
     private static final List<SoundEvent> FARTS_LIST = new LinkedList<>();
+    private static final List<SoundEvent> BURP_LIST = new LinkedList<>();
 
-    public static List<SoundEvent> getList() {
+    public static List<SoundEvent> getFartList() {
         if (FARTS_LIST.isEmpty()) {
-            registerSound("fartsound1");
-            registerSound("fartsound2");
-            registerSound("fartsound3");
-            registerSound("fartsound4");
-            registerSound("fartsound5");
-            registerSound("fartsound6");
-            registerSound("fartsound7");
-            registerSound("fartsound8");
-            registerSound("fartsound9");
-            registerSound("fartsound10");
-            registerSound("fartsound11");
-            registerSound("fartsound12");
-            registerSound("fartsound13");
-            registerSound("fartsound14");
-            registerSound("fartsound15");
-            registerSound("fartsound16");
-            registerSound("fartsound17");
-            registerSound("fartsound18");
-            registerSound("fartsound19");
-            registerSound("fartsound20");
-            registerSound("fartsound21");
-            registerSound("fartsound22");
-            registerSound("fartsound23");
-            registerSound("fartsound24");
-            registerSound("fartsound25");
-            registerSound("fartsound26");
-            registerSound("fartsound27");
-            registerSound("fartsound28");
-            registerSound("fartsound29");
-            registerSound("fartsound30");
-            registerSound("fartsound31");
-            registerSound("fartsound32");
-            registerSound("fartsound33");
-            registerSound("fartsound34");
-            registerSound("fartsound35");
-            registerSound("fartsound36");
+            registerFartSound("fartsound1");
+            registerFartSound("fartsound2");
+            registerFartSound("fartsound3");
+            registerFartSound("fartsound4");
+            registerFartSound("fartsound5");
+            registerFartSound("fartsound6");
+            registerFartSound("fartsound7");
+            registerFartSound("fartsound8");
+            registerFartSound("fartsound9");
+            registerFartSound("fartsound10");
+            registerFartSound("fartsound11");
+            registerFartSound("fartsound12");
+            registerFartSound("fartsound13");
+            registerFartSound("fartsound14");
+            registerFartSound("fartsound15");
+            registerFartSound("fartsound16");
+            registerFartSound("fartsound17");
+            registerFartSound("fartsound18");
+            registerFartSound("fartsound19");
+            registerFartSound("fartsound20");
+            registerFartSound("fartsound21");
+            registerFartSound("fartsound22");
+            registerFartSound("fartsound23");
+            registerFartSound("fartsound24");
+            registerFartSound("fartsound25");
+            registerFartSound("fartsound26");
+            registerFartSound("fartsound27");
+            registerFartSound("fartsound28");
+            registerFartSound("fartsound29");
+            registerFartSound("fartsound30");
+            registerFartSound("fartsound31");
+            registerFartSound("fartsound32");
+            registerFartSound("fartsound33");
+            registerFartSound("fartsound34");
+            registerFartSound("fartsound35");
+            registerFartSound("fartsound36");
         }
         return FARTS_LIST;
     }
 
-    public static SoundEvent registerSound(String soundNameIn) {
+    public static List<SoundEvent> getBurpList() {
+        if (BURP_LIST.isEmpty()) {
+//            registerBurpSound("burpsound1");
+        }
+        return BURP_LIST;
+    }
+
+    public static SoundEvent registerFartSound(String soundNameIn) {
         SoundEvent sound = new SoundEvent(new ResourceLocation(Main.MODID, soundNameIn)).setRegistryName(new ResourceLocation(Main.MODID, soundNameIn));
         if (!FARTS_LIST.contains(sound)) {
             FARTS_LIST.add(sound);
+        }
+        return sound;
+    }
+    public static SoundEvent registerBurpSound(String soundNameIn) {
+        SoundEvent sound = new SoundEvent(new ResourceLocation(Main.MODID, soundNameIn)).setRegistryName(new ResourceLocation(Main.MODID, soundNameIn));
+        if (!BURP_LIST.contains(sound)) {
+            BURP_LIST.add(sound);
         }
         return sound;
     }

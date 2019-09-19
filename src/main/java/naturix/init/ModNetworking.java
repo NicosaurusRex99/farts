@@ -2,6 +2,7 @@ package naturix.init;
 
 import javafx.geometry.Side;
 import naturix.Main;
+import naturix.networking.PacketPlayBurp;
 import naturix.networking.PacketPlayFart;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.network.NetworkDirection;
@@ -23,6 +24,11 @@ public class ModNetworking {
                 PacketPlayFart::toBytes,
                 PacketPlayFart::new,
                 PacketPlayFart::handle);
+        INSTANCE.registerMessage(nextID(),
+                PacketPlayBurp.class,
+                PacketPlayBurp::toBytes,
+                PacketPlayBurp::new,
+                PacketPlayBurp::handle);
     }
 
 }

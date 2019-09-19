@@ -1,9 +1,9 @@
 package naturix.init;
 
 import naturix.Main;
+import naturix.networking.PacketPlayBurp;
 import naturix.networking.PacketPlayFart;
 import net.minecraft.client.Minecraft;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -19,6 +19,9 @@ public class ModEvents {
             return;
         if (ModKeyBindings.PLAY_FART.isPressed()) {
             ModNetworking.INSTANCE.sendToServer(new PacketPlayFart());
+        }
+        if (ModKeyBindings.PLAY_BURP.isPressed()) {
+            ModNetworking.INSTANCE.sendToServer(new PacketPlayBurp());
         }
     }
 }

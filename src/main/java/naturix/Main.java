@@ -81,7 +81,7 @@ public class Main
     public static class RegistryEvents {
         @SubscribeEvent
         public void onSoundRegistryReady(final RegistryEvent.Register<SoundEvent> event) {
-            ModSounds.getList().stream().forEach(sound -> event.getRegistry().register(sound));
+            ModSounds.getFartList().stream().forEach(sound -> event.getRegistry().register(sound));
         }
     }
 }
