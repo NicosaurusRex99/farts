@@ -12,6 +12,8 @@ credits="Thanks to TheRealP455w0rd for helping make this mod" #optional
 authors="NicosaurusRex99, TheRealP455w0rd" #optional
 description='''
 press g for farts
+
+press h for burps
 '''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.examplemod]] #optional

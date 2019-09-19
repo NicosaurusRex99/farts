@@ -258,5 +258,35 @@
         "sounds": ["farts:burpsound7"], 
         "subtitle": "farts.subtitle.burpsound" ,
         "stream": true
+    },
+    "burpsound8": { 
+        "category": "player", 
+        "sounds": ["farts:burpsound8"], 
+        "subtitle": "farts.subtitle.burpsound" ,
+        "stream": true
+    },
+    "burpsound9": { 
+        "category": "player", 
+        "sounds": ["farts:burpsound9"], 
+        "subtitle": "farts.subtitle.burpsound" ,
+        "stream": true
+    },
+    "burpsound10": { 
+        "category": "player", 
+        "sounds": ["farts:burpsound10"], 
+        "subtitle": "farts.subtitle.burpsound" ,
+        "stream": true
+    },
+    "burpsound11": { 
+        "category": "player", 
+        "sounds": ["farts:burpsound11"], 
+        "subtitle": "farts.subtitle.burpsound" ,
+        "stream": true
+    },
+    "burpsound12": { 
+        "category": "player", 
+        "sounds": ["farts:burpsound12"], 
+        "subtitle": "farts.subtitle.burpsound" ,
+        "stream": true
     }
 }

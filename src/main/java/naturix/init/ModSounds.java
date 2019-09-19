@@ -67,6 +67,11 @@ public class ModSounds {
             registerBurpSound("burpsound5");
             registerBurpSound("burpsound6");
             registerBurpSound("burpsound7");
+            registerBurpSound("burpsound8");
+            registerBurpSound("burpsound9");
+            registerBurpSound("burpsound10");
+            registerBurpSound("burpsound11");
+            registerBurpSound("burpsound12");
         }
         return BURP_LIST;
     }
