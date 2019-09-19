@@ -215,4 +215,48 @@
         "subtitle": "farts.subtitle.fartsound" ,
         "stream": true
     }
+	
+	,
+    "burpsound1": { 
+        "category": "player", 
+        "sounds": ["farts:burpsound1"], 
+        "subtitle": "farts.subtitle.burpsound" ,
+        "stream": true
+    },
+    "burpsound2": { 
+        "category": "player", 
+        "sounds": ["farts:burpsound2"], 
+        "subtitle": "farts.subtitle.burpsound" ,
+        "stream": true
+    },
+    "burpsound3": { 
+        "category": "player", 
+        "sounds": ["farts:burpsound3"], 
+        "subtitle": "farts.subtitle.burpsound" ,
+        "stream": true
+    },
+    "burpsound4": { 
+        "category": "player", 
+        "sounds": ["farts:burpsound4"], 
+        "subtitle": "farts.subtitle.burpsound" ,
+        "stream": true
+    },
+    "burpsound5": { 
+        "category": "player", 
+        "sounds": ["farts:burpsound5"], 
+        "subtitle": "farts.subtitle.burpsound" ,
+        "stream": true
+    },
+    "burpsound6": { 
+        "category": "player", 
+        "sounds": ["farts:burpsound6"], 
+        "subtitle": "farts.subtitle.burpsound" ,
+        "stream": true
+    },
+    "burpsound7": { 
+        "category": "player", 
+        "sounds": ["farts:burpsound7"], 
+        "subtitle": "farts.subtitle.burpsound" ,
+        "stream": true
+    }
 }

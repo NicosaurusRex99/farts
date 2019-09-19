@@ -60,7 +60,13 @@ public class ModSounds {
 
     public static List<SoundEvent> getBurpList() {
         if (BURP_LIST.isEmpty()) {
-//            registerBurpSound("burpsound1");
+            registerBurpSound("burpsound1");
+            registerBurpSound("burpsound2");
+            registerBurpSound("burpsound3");
+            registerBurpSound("burpsound4");
+            registerBurpSound("burpsound5");
+            registerBurpSound("burpsound6");
+            registerBurpSound("burpsound7");
         }
         return BURP_LIST;
     }
