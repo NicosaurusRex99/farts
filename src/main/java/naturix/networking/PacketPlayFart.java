@@ -61,9 +61,9 @@ public class PacketPlayFart {
         if (blockstate.getBlock() instanceof IGrowable) {
             IGrowable igrowable = (IGrowable)blockstate.getBlock();
             if (igrowable.canGrow(worldIn, pos, blockstate, worldIn.isRemote)) {
-                if (!worldIn.isRemote) {
+                if (worldIn instanceof ServerWorld) {
                     if (igrowable.canUseBonemeal(worldIn, worldIn.rand, pos, blockstate)) {
-                        igrowable.grow(worldIn, worldIn.rand, pos, blockstate);
+                        igrowable.grow((ServerWorld) worldIn, worldIn.rand, pos, blockstate);
                     }
                 }
 

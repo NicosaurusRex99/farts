@@ -36,16 +36,12 @@ public class Main
     // Directly reference a log4j logger.
     private static final Logger LOGGER = LogManager.getLogger();
     public static final String MODID = "farts";
-    public static final String VERSION = "1.14.4.2";
+    public static final String VERSION = "1.15.2.0";
     public static final String NAME = "Farts";
     public static IProxy proxy = DistExecutor.runForDist(() -> () -> new ClientProxy(), () -> () -> new ServerProxy());
 
     public Main() {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
-
         MinecraftForge.EVENT_BUS.register(this);
     }
 
@@ -55,23 +51,8 @@ public class Main
         proxy.init();
     }
 
-    private void doClientStuff(final FMLClientSetupEvent event) {
-
-    }
-
-    private void enqueueIMC(final InterModEnqueueEvent event)
-    {
-
-    }
-
-    private void processIMC(final InterModProcessEvent event)
-    {
-
-    }
-    // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
     public void onServerStarting(FMLServerStartingEvent event) {
-
         ModNetworking.init();
     }
 
