@@ -77,18 +77,20 @@ public class ModSounds {
     }
 
     public static SoundEvent registerFartSound(String soundNameIn) {
-        SoundEvent sound = new SoundEvent(new ResourceLocation(Main.MODID, soundNameIn)).setRegistryName(new ResourceLocation(Main.MODID, soundNameIn));
-        if (!FARTS_LIST.contains(sound)) {
-            FARTS_LIST.add(sound);
+        ResourceLocation location = new ResourceLocation(Main.MODID, soundNameIn);
+        SoundEvent event = new SoundEvent(location);
+        if (!FARTS_LIST.contains(event)) {
+            FARTS_LIST.add(event);
         }
-        return sound;
+        return event;
     }
     public static SoundEvent registerBurpSound(String soundNameIn) {
-        SoundEvent sound = new SoundEvent(new ResourceLocation(Main.MODID, soundNameIn)).setRegistryName(new ResourceLocation(Main.MODID, soundNameIn));
-        if (!BURP_LIST.contains(sound)) {
-            BURP_LIST.add(sound);
+        ResourceLocation location = new ResourceLocation(Main.MODID, soundNameIn);
+        SoundEvent event = new SoundEvent(location);
+        if (!BURP_LIST.contains(event)) {
+            BURP_LIST.add(event);
         }
-        return sound;
+        return event;
     }
 
 }
