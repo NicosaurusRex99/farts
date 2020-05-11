@@ -74,8 +74,6 @@ public class PacketPlayFart implements IMessage {
                     {
                         igrowable.grow(worldIn, worldIn.rand, iterable, iblockstate);
                     }
-
-                    stack.shrink(1);
                 }
 
                 return true;
