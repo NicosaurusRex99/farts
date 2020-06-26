@@ -35,8 +35,8 @@ public class PacketPlayFart {
         ctx.get().enqueueWork(() -> {
             ServerPlayerEntity player = ctx.get().getSender();
             World world = player.getEntityWorld();
-                world.playSound(null, player.getPosition(), FartUtils.getRandomFart(world.rand), SoundCategory.PLAYERS, 0.8F, 1.0F);
-                Iterator<BlockPos> iterator = BlockPos.getAllInBox(player.getPosition(), player.getPosition().add(3, 2, 3)).iterator();
+                world.playSound(null, new BlockPos(player.getPosX(), player.getPosY(), player.getPosZ()), FartUtils.getRandomFart(world.rand), SoundCategory.PLAYERS, 0.8F, 1.0F);
+                Iterator<BlockPos> iterator = BlockPos.getAllInBox(new BlockPos(player.getPosX(), player.getPosY(), player.getPosZ()), new BlockPos(player.getPosX(), player.getPosY(), player.getPosZ()).add(3, 2, 3)).iterator();
                 while (iterator.hasNext()) {
                     BlockPos p = iterator.next();
                     if(player.canPlayerEdit(p.down(2), Direction.DOWN, null)){
@@ -63,7 +63,7 @@ public class PacketPlayFart {
             if (igrowable.canGrow(worldIn, pos, blockstate, worldIn.isRemote)) {
                 if (!worldIn.isRemote) {
                     if (igrowable.canUseBonemeal(worldIn, worldIn.rand, pos, blockstate)) {
-                        igrowable.grow(worldIn, worldIn.rand, pos, blockstate);
+                        igrowable.grow((ServerWorld)worldIn, worldIn.rand, pos, blockstate);
                     }
                 }
 
