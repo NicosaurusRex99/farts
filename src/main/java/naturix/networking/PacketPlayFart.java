@@ -1,6 +1,7 @@
 package naturix.networking;
 
 import io.netty.buffer.ByteBuf;
+import naturix.Config;
 import naturix.utils.FartUtils;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.IGrowable;
@@ -39,7 +40,7 @@ public class PacketPlayFart {
                 Iterator<BlockPos> iterator = BlockPos.getAllInBox(new BlockPos(player.getPosX(), player.getPosY(), player.getPosZ()), new BlockPos(player.getPosX(), player.getPosY(), player.getPosZ()).add(3, 2, 3)).iterator();
                 while (iterator.hasNext()) {
                     BlockPos p = iterator.next();
-                    if(player.canPlayerEdit(p.down(2), Direction.DOWN, null)){
+                    if(player.canPlayerEdit(p.down(2), Direction.DOWN, null) && Config.fartFertilize != false){
                     applyBonemeal(player.getHeldItem(player.getActiveHand()), world, p.down(2));
                 }
                 }
