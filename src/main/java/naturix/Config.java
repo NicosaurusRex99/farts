@@ -19,8 +19,8 @@ public class Config {
     public static boolean fartFertilize;
 
     @SubscribeEvent
-    public static void onModConfigEvent(final ModConfig.ModConfigEvent configEvent) {
-        if (configEvent.getConfig().getSpec() == Config.CLIENT_SPEC) {
+    public static void onModConfigEvent(final ModConfig configEvent) {
+        if (configEvent.getSpec() == Config.CLIENT_SPEC) {
             bakeConfig();
         }
     }

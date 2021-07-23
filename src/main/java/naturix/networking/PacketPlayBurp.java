@@ -2,11 +2,10 @@ package naturix.networking;
 
 import io.netty.buffer.ByteBuf;
 import naturix.utils.FartUtils;
-import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.network.NetworkEvent;
+import net.minecraft.core.*;
+import net.minecraft.server.level.*;
+import net.minecraft.sounds.*;
+import net.minecraftforge.fmllegacy.network.*;
 
 import java.util.function.Supplier;
 
@@ -26,9 +25,9 @@ public class PacketPlayBurp {
 
     public void handle(Supplier<NetworkEvent.Context> ctx) {
         ctx.get().enqueueWork(() -> {
-            ServerPlayerEntity player = ctx.get().getSender();
-            World world = player.getEntityWorld();
-            world.playSound(null, new BlockPos(player.getPosX(), player.getPosY(), player.getPosZ()), FartUtils.getRandomBurp(world.rand), SoundCategory.PLAYERS, 0.8F, 1.0F);
+            ServerPlayer player = ctx.get().getSender();
+            ServerLevel world = player.getLevel();
+            world.playSound(null, new BlockPos(player.xo, player.yo, player.zo), FartUtils.getRandomBurp(world.random), SoundSource.PLAYERS, 0.8F, 1.0F);
         });
         ctx.get().setPacketHandled(true);
     }

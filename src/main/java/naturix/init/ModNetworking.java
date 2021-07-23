@@ -1,13 +1,11 @@
 package naturix.init;
 
-import javafx.geometry.Side;
 import naturix.Main;
 import naturix.networking.PacketPlayBurp;
 import naturix.networking.PacketPlayFart;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.network.NetworkDirection;
-import net.minecraftforge.fml.network.NetworkRegistry;
-import net.minecraftforge.fml.network.simple.SimpleChannel;
+import net.minecraft.resources.*;
+import net.minecraftforge.fmllegacy.network.*;
+import net.minecraftforge.fmllegacy.network.simple.*;
 
 public class ModNetworking {
 

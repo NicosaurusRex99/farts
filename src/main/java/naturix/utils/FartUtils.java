@@ -3,7 +3,7 @@ package naturix.utils;
 import java.util.Random;
 
 import naturix.init.ModSounds;
-import net.minecraft.util.SoundEvent;
+import net.minecraft.sounds.*;
 
 /**
  * @author p455w0rd

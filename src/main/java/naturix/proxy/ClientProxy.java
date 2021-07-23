@@ -2,8 +2,8 @@ package naturix.proxy;
 
 import naturix.init.ModKeyBindings;
 import net.minecraft.client.Minecraft;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.world.World;
+import net.minecraft.client.player.*;
+import net.minecraft.world.level.*;
 
 public class ClientProxy implements IProxy {
 
@@ -13,12 +13,12 @@ public class ClientProxy implements IProxy {
     }
 
     @Override
-    public World getClientWorld() {
-        return Minecraft.getInstance().world;
+    public Level getClientWorld() {
+        return Minecraft.getInstance().player.clientLevel;
     }
 
     @Override
-    public PlayerEntity getClientPlayer() {
+    public LocalPlayer getClientPlayer() {
         return Minecraft.getInstance().player;
     }
 }

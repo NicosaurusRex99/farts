@@ -17,10 +17,10 @@ public class ModEvents {
         Minecraft mc = Minecraft.getInstance();
         if (mc.player == null || event.phase == TickEvent.Phase.START)
             return;
-        if (ModKeyBindings.PLAY_FART.isPressed()) {
+        if (ModKeyBindings.PLAY_FART.isDown()) {
             ModNetworking.INSTANCE.sendToServer(new PacketPlayFart());
         }
-        if (ModKeyBindings.PLAY_BURP.isPressed()) {
+        if (ModKeyBindings.PLAY_BURP.isDown()) {
             ModNetworking.INSTANCE.sendToServer(new PacketPlayBurp());
         }
     }

@@ -4,8 +4,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 import naturix.Main;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundEvent;
+import net.minecraft.resources.*;
+import net.minecraft.sounds.*;
 
 /**
  * @author p455w0rd
