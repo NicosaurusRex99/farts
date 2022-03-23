@@ -1,6 +1,5 @@
-package naturix.proxy;
+package nicusha.farts.proxy;
 
-import net.minecraft.server.level.*;
 import net.minecraft.world.entity.player.*;
 import net.minecraft.world.level.*;
 

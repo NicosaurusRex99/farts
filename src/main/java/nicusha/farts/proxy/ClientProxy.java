@@ -1,6 +1,6 @@
-package naturix.proxy;
+package nicusha.farts.proxy;
 
-import naturix.init.ModKeyBindings;
+import nicusha.farts.init.ModKeyBindings;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.*;
 import net.minecraft.world.level.*;

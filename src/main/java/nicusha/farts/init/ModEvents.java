@@ -1,15 +1,15 @@
-package naturix.init;
+package nicusha.farts.init;
 
-import naturix.Main;
-import naturix.networking.PacketPlayBurp;
-import naturix.networking.PacketPlayFart;
+import nicusha.farts.*;
+import nicusha.farts.networking.PacketPlayBurp;
+import nicusha.farts.networking.PacketPlayFart;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 
-@EventBusSubscriber(modid = Main.MODID, value = Dist.CLIENT)
+@EventBusSubscriber(modid = Farts.MODID, value = Dist.CLIENT)
 public class ModEvents {
 
     @SubscribeEvent

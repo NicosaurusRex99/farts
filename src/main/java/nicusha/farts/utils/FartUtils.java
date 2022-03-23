@@ -1,8 +1,8 @@
-package naturix.utils;
+package nicusha.farts.utils;
 
 import java.util.Random;
 
-import naturix.init.ModSounds;
+import nicusha.farts.init.ModSounds;
 import net.minecraft.sounds.*;
 
 /**

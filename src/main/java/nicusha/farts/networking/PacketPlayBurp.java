@@ -1,13 +1,13 @@
-package naturix.networking;
+package nicusha.farts.networking;
 
 import io.netty.buffer.ByteBuf;
-import naturix.utils.FartUtils;
+import net.minecraftforge.network.*;
+import nicusha.farts.utils.FartUtils;
 import net.minecraft.core.*;
 import net.minecraft.server.level.*;
 import net.minecraft.sounds.*;
-import net.minecraftforge.fmllegacy.network.*;
 
-import java.util.function.Supplier;
+import java.util.function.*;
 
 public class PacketPlayBurp {
 

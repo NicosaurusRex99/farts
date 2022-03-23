@@ -1,8 +1,8 @@
-package naturix.networking;
+package nicusha.farts.networking;
 
 import io.netty.buffer.ByteBuf;
-import naturix.Config;
-import naturix.utils.FartUtils;
+import net.minecraftforge.network.*;
+import nicusha.farts.utils.FartUtils;
 import net.minecraft.core.*;
 import net.minecraft.server.level.*;
 import net.minecraft.sounds.*;
@@ -10,10 +10,9 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.*;
-import net.minecraftforge.fmllegacy.network.*;
 
 import java.util.Iterator;
-import java.util.function.Supplier;
+import java.util.function.*;
 
 public class PacketPlayFart {
 
@@ -37,7 +36,7 @@ public class PacketPlayFart {
                 Iterator<BlockPos> iterator = BlockPos.betweenClosed(new BlockPos(player.xo, player.yo, player.zo), new BlockPos(player.xo, player.yo, player.zo).offset(3, 2, 3)).iterator();
                 while (iterator.hasNext()) {
                     BlockPos p = iterator.next();
-                    if(player.mayUseItemAt(p.below(2), Direction.DOWN, null) && Config.fartFertilize != false){
+                    if(player.mayUseItemAt(p.below(2), Direction.DOWN, null)){
                     growCrop(player.getItemInHand(player.getUsedItemHand()), world, p.below(2));
                 }
                 }
@@ -64,7 +63,6 @@ public class PacketPlayFart {
                         bonemealableblock.performBonemeal((ServerLevel)p_40629_, p_40629_.random, p_40630_, blockstate);
                     }
 
-                    p_40628_.shrink(1);
                 }
 
                 return true;

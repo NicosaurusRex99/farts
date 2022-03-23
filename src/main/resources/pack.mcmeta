@@ -1,7 +1,6 @@
 {
     "pack": {
-        "description": "A mod that adds farts",
-        "pack_format": 6,
-        "_comment": "Farts"
+        "description": "examplemod resources",
+        "pack_format": 9
     }
 }

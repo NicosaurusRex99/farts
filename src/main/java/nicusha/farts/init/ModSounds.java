@@ -1,11 +1,11 @@
-package naturix.init;
+package nicusha.farts.init;
 
 import java.util.LinkedList;
 import java.util.List;
 
-import naturix.Main;
 import net.minecraft.resources.*;
 import net.minecraft.sounds.*;
+import nicusha.farts.*;
 
 /**
  * @author p455w0rd
@@ -77,14 +77,14 @@ public class ModSounds {
     }
 
     public static SoundEvent registerFartSound(String soundNameIn) {
-        SoundEvent sound = new SoundEvent(new ResourceLocation(Main.MODID, soundNameIn)).setRegistryName(new ResourceLocation(Main.MODID, soundNameIn));
+        SoundEvent sound = new SoundEvent(new ResourceLocation(Farts.MODID, soundNameIn)).setRegistryName(new ResourceLocation(Farts.MODID, soundNameIn));
         if (!FARTS_LIST.contains(sound)) {
             FARTS_LIST.add(sound);
         }
         return sound;
     }
     public static SoundEvent registerBurpSound(String soundNameIn) {
-        SoundEvent sound = new SoundEvent(new ResourceLocation(Main.MODID, soundNameIn)).setRegistryName(new ResourceLocation(Main.MODID, soundNameIn));
+        SoundEvent sound = new SoundEvent(new ResourceLocation(Farts.MODID, soundNameIn)).setRegistryName(new ResourceLocation(Farts.MODID, soundNameIn));
         if (!BURP_LIST.contains(sound)) {
             BURP_LIST.add(sound);
         }

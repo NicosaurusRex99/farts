@@ -1,7 +1,7 @@
-package naturix.init;
+package nicusha.farts.init;
 
 import net.minecraft.client.*;
-import net.minecraftforge.fmlclient.registry.*;
+import net.minecraftforge.client.*;
 import org.lwjgl.glfw.GLFW;
 
 public class ModKeyBindings {

@@ -1,6 +1,6 @@
-package naturix.proxy;
+package nicusha.farts.proxy;
 
-import naturix.init.ModNetworking;
+import nicusha.farts.init.ModNetworking;
 import net.minecraft.world.entity.player.*;
 import net.minecraft.world.level.*;
 
