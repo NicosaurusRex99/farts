@@ -2,6 +2,7 @@ package nicusha.farts.utils;
 
 import java.util.Random;
 
+import net.minecraft.util.RandomSource;
 import nicusha.farts.init.ModSounds;
 import net.minecraft.sounds.*;
 
@@ -11,11 +12,11 @@ import net.minecraft.sounds.*;
  */
 public class FartUtils {
 
-    public static SoundEvent getRandomFart(Random rand) {
+    public static SoundEvent getRandomFart(RandomSource rand) {
         int num = rand.nextInt(ModSounds.getFartList().size());
         return ModSounds.getFartList().get(num);
     }
-    public static SoundEvent getRandomBurp(Random rand) {
+    public static SoundEvent getRandomBurp(RandomSource rand) {
         int num = rand.nextInt(ModSounds.getBurpList().size());
         return ModSounds.getBurpList().get(num);
     }

@@ -1,13 +1,10 @@
 package nicusha.farts;
 
 import com.mojang.logging.LogUtils;
-import net.minecraft.sounds.*;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.*;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.*;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -27,6 +24,7 @@ public class Farts
     {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::common);
         MinecraftForge.EVENT_BUS.register(this);
+        ModSounds.SOUNDS.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
 
     public void common(FMLCommonSetupEvent event) {
@@ -39,11 +37,5 @@ public class Farts
         ModNetworking.init();
     }
 
-    @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
-    public static class RegistryEvents {
-        @SubscribeEvent
-        public void onSoundRegistryReady(final RegistryEvent.Register<SoundEvent> event) {
-            ModSounds.getFartList().stream().forEach(sound -> event.getRegistry().register(sound));
-        }
-    }
+
 }
