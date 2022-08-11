@@ -1,6 +1,7 @@
 package nicusha.farts;
 
 import com.mojang.logging.LogUtils;
+import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.*;
@@ -35,6 +36,12 @@ public class Farts
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
         ModNetworking.init();
+    }
+
+    @SubscribeEvent
+    public void keyBinding(RegisterKeyMappingsEvent event) {
+        event.register(ModKeyBindings.PLAY_FART);
+        event.register(ModKeyBindings.PLAY_BURP);
     }
 
 

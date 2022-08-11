@@ -14,7 +14,7 @@ plugins {
 apply plugin: 'net.minecraftforge.gradle'
 
 
-version = '1.19'
+version = '1.19.2'
 group = 'nicusha.farts' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'farts'
 
@@ -22,7 +22,7 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
 minecraft {
-    mappings channel: 'official', version: '1.19'
+    mappings channel: 'official', version: '1.19.2'
     // accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg') // Currently, this location cannot be changed from the default.
 
     runs {
@@ -82,7 +82,7 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.19-41.0.1'
+    minecraft 'net.minecraftforge:forge:1.19.2-43.0.8'
 
 }
 
@@ -91,7 +91,7 @@ jar {
         attributes([
                 "Specification-Title"     : "farts",
                 "Specification-Vendor"    : "Nicusha",
-                "Specification-Version"   : "1.19",
+                "Specification-Version"   : "1.19.2",
                 "Implementation-Title"    : project.name,
                 "Implementation-Version"  : project.jar.archiveVersion,
                 "Implementation-Vendor"   : "Nicusha",
