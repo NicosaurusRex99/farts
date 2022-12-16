@@ -5,10 +5,9 @@ issueTrackerURL="https://github.com/NicosaurusRex99/farts/issues"
 [[mods]]
 modId="farts"
 version="${file.jarVersion}"
-displayName="Farts" #mandatory
-logoFile="logo.png" #optional
-# A text field displayed in the mod UI
-credits="Thanks for this example mod goes to Java"
+displayName="Farts"
+logoFile="logo.png"
+credits=""
 authors="NicosaurusRex99, TheRealP455W0RD"
 description='''
 press g for farts

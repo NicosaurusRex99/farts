@@ -32,14 +32,14 @@ public class PacketPlayFart {
         ctx.get().enqueueWork(() -> {
             ServerPlayer player = ctx.get().getSender();
             ServerLevel world = player.getLevel();
-                world.playSound(null, new BlockPos(player.xo, player.yo, player.zo), FartUtils.getRandomFart(world.random), SoundSource.PLAYERS, 0.8F, 1.0F);
-                Iterator<BlockPos> iterator = BlockPos.betweenClosed(new BlockPos(player.xo, player.yo, player.zo), new BlockPos(player.xo, player.yo, player.zo).offset(3, 2, 3)).iterator();
+                Iterator<BlockPos> iterator = BlockPos.betweenClosed(player.blockPosition().offset(-3, -2, -3), player.blockPosition().offset(3, 2, 3)).iterator();
                 while (iterator.hasNext()) {
                     BlockPos p = iterator.next();
                     if(player.mayUseItemAt(p.below(2), Direction.DOWN, null)){
                     growCrop(player.getItemInHand(player.getUsedItemHand()), world, p.below(2));
                 }
                 }
+            world.playSound(null, new BlockPos(player.xo, player.yo, player.zo), FartUtils.getRandomFart(world.random), SoundSource.PLAYERS, 0.8F, 1.0F);
         });
         ctx.get().setPacketHandled(true);
     }

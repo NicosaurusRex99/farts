@@ -137,7 +137,7 @@ public class ModSounds {
     }
 
     private static SoundEvent createSoundEvent(String soundPath) {
-        return new SoundEvent(new ResourceLocation(MODID, soundPath));
+        return SoundEvent.createVariableRangeEvent(new ResourceLocation(MODID, soundPath));
     }
 
 }
