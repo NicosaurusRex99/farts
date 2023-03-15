@@ -9,6 +9,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.loading.FMLLoader;
 import nicusha.farts.init.*;
 import nicusha.farts.proxy.*;
 import org.slf4j.Logger;
@@ -19,7 +20,7 @@ public class Farts
 {
     public static final Logger LOGGER = LogUtils.getLogger();
     public static final String MODID = "farts";
-    public static IProxy proxy = DistExecutor.runForDist(() -> () -> new ClientProxy(), () -> () -> new ServerProxy());
+    public static IProxy proxy = FMLLoader.getDist().isClient() ? new ClientProxy() : new ServerProxy();
 
     public Farts()
     {
@@ -38,11 +39,6 @@ public class Farts
         ModNetworking.init();
     }
 
-    @SubscribeEvent
-    public void keyBinding(RegisterKeyMappingsEvent event) {
-        event.register(ModKeyBindings.PLAY_FART);
-        event.register(ModKeyBindings.PLAY_BURP);
-    }
 
 
 }

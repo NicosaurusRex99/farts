@@ -1,5 +1,6 @@
 package nicusha.farts.init;
 
+import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import nicusha.farts.*;
 import nicusha.farts.networking.PacketPlayBurp;
 import nicusha.farts.networking.PacketPlayFart;
@@ -24,4 +25,11 @@ public class ModEvents {
             ModNetworking.INSTANCE.sendToServer(new PacketPlayBurp());
         }
     }
+
+    @SubscribeEvent
+    public void keyBinding(RegisterKeyMappingsEvent event) {
+        event.register(ModKeyBindings.PLAY_FART);
+        event.register(ModKeyBindings.PLAY_BURP);
+    }
+
 }
