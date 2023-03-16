@@ -39,7 +39,7 @@ public class PacketPlayFart {
                     growCrop(player.getItemInHand(player.getUsedItemHand()), world, p.below(2));
                 }
                 }
-            world.playSound(null, new BlockPos(player.xo, player.yo, player.zo), FartUtils.getRandomFart(world.random), SoundSource.PLAYERS, 0.8F, 1.0F);
+            world.playSound(null, player.blockPosition(), FartUtils.getRandomFart(world.random), SoundSource.PLAYERS, 0.8F, 1.0F);
         });
         ctx.get().setPacketHandled(true);
     }

@@ -27,7 +27,7 @@ public class PacketPlayBurp {
         ctx.get().enqueueWork(() -> {
             ServerPlayer player = ctx.get().getSender();
             ServerLevel world = player.getLevel();
-            world.playSound(null, new BlockPos(player.xo, player.yo, player.zo), FartUtils.getRandomBurp(world.random), SoundSource.PLAYERS, 0.8F, 1.0F);
+            world.playSound(null, player.blockPosition(), FartUtils.getRandomBurp(world.random), SoundSource.PLAYERS, 0.8F, 1.0F);
         });
         ctx.get().setPacketHandled(true);
     }
