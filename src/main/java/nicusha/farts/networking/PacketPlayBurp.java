@@ -1,6 +1,7 @@
 package nicusha.farts.networking;
 
 import io.netty.buffer.ByteBuf;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.network.*;
 import nicusha.farts.utils.FartUtils;
 import net.minecraft.core.*;
@@ -26,7 +27,7 @@ public class PacketPlayBurp {
     public void handle(Supplier<NetworkEvent.Context> ctx) {
         ctx.get().enqueueWork(() -> {
             ServerPlayer player = ctx.get().getSender();
-            ServerLevel world = player.getLevel();
+            Level world = player.level();
             world.playSound(null, player.blockPosition(), FartUtils.getRandomBurp(world.random), SoundSource.PLAYERS, 0.8F, 1.0F);
         });
         ctx.get().setPacketHandled(true);

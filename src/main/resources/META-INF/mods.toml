@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[41,)"
+loaderVersion="[46,)"
 license="Ace3 Style BSD"
 issueTrackerURL="https://github.com/NicosaurusRex99/farts/issues"
 [[mods]]
@@ -16,12 +16,12 @@ press h for burps
 [[dependencies.farts]]
     modId="forge"
     mandatory=true
-    versionRange="[41,)"
+    versionRange="[46,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.farts]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.19,)"
+    versionRange="[1.20,)"
     ordering="NONE"
     side="BOTH"

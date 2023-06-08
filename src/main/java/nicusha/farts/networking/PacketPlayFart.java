@@ -31,7 +31,7 @@ public class PacketPlayFart {
     public void handle(Supplier<NetworkEvent.Context> ctx) {
         ctx.get().enqueueWork(() -> {
             ServerPlayer player = ctx.get().getSender();
-            ServerLevel world = player.getLevel();
+            Level world = player.level();
                 Iterator<BlockPos> iterator = BlockPos.betweenClosed(player.blockPosition().offset(-3, -2, -3), player.blockPosition().offset(3, 2, 3)).iterator();
                 while (iterator.hasNext()) {
                     BlockPos p = iterator.next();
