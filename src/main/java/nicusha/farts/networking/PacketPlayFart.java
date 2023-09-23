@@ -1,7 +1,14 @@
 package nicusha.farts.networking;
 
 import io.netty.buffer.ByteBuf;
+import net.minecraft.client.Minecraft;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.event.network.CustomPayloadEvent;
 import net.minecraftforge.network.*;
+import nicusha.farts.Farts;
 import nicusha.farts.utils.FartUtils;
 import net.minecraft.core.*;
 import net.minecraft.server.level.*;
@@ -14,61 +21,59 @@ import net.minecraft.world.level.block.state.*;
 import java.util.Iterator;
 import java.util.function.*;
 
-public class PacketPlayFart {
+public class PacketPlayFart implements Message<PacketPlayFart> {
 
-    public PacketPlayFart(ByteBuf buf) {
-
+    public PacketPlayFart() {}
+    @Override
+    public Dist getExecutingSide() {
+        return Dist.DEDICATED_SERVER;
     }
-
-    public void toBytes(ByteBuf buf) {
-
-    }
-
-    public PacketPlayFart() {
-    }
-
-
-    public void handle(Supplier<NetworkEvent.Context> ctx) {
-        ctx.get().enqueueWork(() -> {
-            ServerPlayer player = ctx.get().getSender();
-            Level world = player.level();
-                Iterator<BlockPos> iterator = BlockPos.betweenClosed(player.blockPosition().offset(-3, -2, -3), player.blockPosition().offset(3, 2, 3)).iterator();
-                while (iterator.hasNext()) {
-                    BlockPos p = iterator.next();
-                    if(player.mayUseItemAt(p.below(2), Direction.DOWN, null)){
-                    growCrop(player.getItemInHand(player.getUsedItemHand()), world, p.below(2));
+    @Override
+    public void server(CustomPayloadEvent.Context context) {
+        context.enqueueWork(() -> {
+            ServerPlayer player = context.getSender();
+            Level level = player.level();
+            level.playSound(null, player.blockPosition(), FartUtils.getRandomFart(level.random), SoundSource.PLAYERS, 0.8F, 1.0F);
+            Iterator<BlockPos> iterator = BlockPos.betweenClosed(player.blockPosition().offset(-3, -2, -3), player.blockPosition().offset(3, 2, 3)).iterator();
+            while (iterator.hasNext()) {
+                BlockPos p = iterator.next();
+                if(player.mayUseItemAt(p.below(2), Direction.DOWN, null)){
+                    growCrop(player, level, p.below(2));
                 }
-                }
-            world.playSound(null, player.blockPosition(), FartUtils.getRandomFart(world.random), SoundSource.PLAYERS, 0.8F, 1.0F);
+            }
         });
-        ctx.get().setPacketHandled(true);
+        context.setPacketHandled(true);
+    }
+    @Override
+    public PacketPlayFart fromBytes(FriendlyByteBuf packetBuffer) {
+        return this;
     }
 
-    @Deprecated //Forge: Use Player/Hand version
-    public static boolean growCrop(ItemStack p_40628_, Level p_40629_, BlockPos p_40630_) {
-        if (p_40629_ instanceof net.minecraft.server.level.ServerLevel)
-            return applyBonemeal(p_40628_, p_40629_, p_40630_, net.minecraftforge.common.util.FakePlayerFactory.getMinecraft((net.minecraft.server.level.ServerLevel)p_40629_));
-        return false;
+    @Override
+    public void toBytes(FriendlyByteBuf packetBuffer) {
     }
 
-    public static boolean applyBonemeal(ItemStack p_40628_, Level p_40629_, BlockPos p_40630_, net.minecraft.world.entity.player.Player player) {
-        BlockState blockstate = p_40629_.getBlockState(p_40630_);
-        int hook = net.minecraftforge.event.ForgeEventFactory.onApplyBonemeal(player, p_40629_, p_40630_, blockstate, p_40628_);
+    public static boolean growCrop(Player player, Level level, BlockPos pos) {
+        return applyBonemeal(player.getItemInHand(player.getUsedItemHand()), level, pos, player);
+    }
+
+    public static boolean applyBonemeal(ItemStack stack, Level level, BlockPos pos, Player player) {
+        BlockState blockstate = level.getBlockState(pos);
+        int hook = net.minecraftforge.event.ForgeEventFactory.onApplyBonemeal(player, level, pos, blockstate, stack);
         if (hook != 0) return hook > 0;
-        if (blockstate.getBlock() instanceof BonemealableBlock) {
-            BonemealableBlock bonemealableblock = (BonemealableBlock)blockstate.getBlock();
-            if (bonemealableblock.isValidBonemealTarget(p_40629_, p_40630_, blockstate, p_40629_.isClientSide)) {
-                if (p_40629_ instanceof ServerLevel) {
-                    if (bonemealableblock.isBonemealSuccess(p_40629_, p_40629_.random, p_40630_, blockstate)) {
-                        bonemealableblock.performBonemeal((ServerLevel)p_40629_, p_40629_.random, p_40630_, blockstate);
+        Block block = blockstate.getBlock();
+        if (block instanceof BonemealableBlock bonemealableblock) {
+            if (bonemealableblock.isValidBonemealTarget(level, pos, blockstate)) {
+                BlockPos abovePos = pos.above();
+                BlockState aboveBlockState = level.getBlockState(abovePos);
+                if (aboveBlockState.isAir() && level instanceof ServerLevel) {
+                    if (bonemealableblock.isBonemealSuccess(level, level.random, pos, blockstate)) {
+                        bonemealableblock.performBonemeal((ServerLevel)level, level.random, pos, blockstate);
+                        return true;
                     }
-
                 }
-
-                return true;
             }
         }
-
         return false;
     }
 }
