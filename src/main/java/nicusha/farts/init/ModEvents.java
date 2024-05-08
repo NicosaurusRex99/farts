@@ -1,30 +1,28 @@
 package nicusha.farts.init;
 
-import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
-import net.minecraftforge.fml.LogicalSide;
-import net.minecraftforge.network.SimpleChannel;
+import net.minecraft.client.Minecraft;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.RandomSource;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.ClientTickEvent;
+import net.neoforged.neoforge.event.EventHooks;
+import net.neoforged.neoforge.network.PacketDistributor;
 import nicusha.farts.*;
 import nicusha.farts.networking.*;
-import net.minecraft.client.Minecraft;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 
-@EventBusSubscriber(modid = Farts.MODID, value = Dist.CLIENT)
+@EventBusSubscriber(modid = Farts.MODID)
 public class ModEvents {
-
     @SubscribeEvent
-    public static void handleEventInput(TickEvent.ClientTickEvent event) {
+    public static void handleEventInput(ClientTickEvent.Pre event) {
         Minecraft mc = Minecraft.getInstance();
-        if (mc.player == null || event.phase == TickEvent.Phase.START)
+        if (mc.player == null)
             return;
         if (ModKeyBindings.PLAY_FART.isDown()) {
-            ModNetworking.INSTANCE.send(new PacketPlayFart(), mc.player.connection.getConnection());
+            ModNetworking.sendToServer(new FartPayload(0.8F, 1.0F));
         }
         if (ModKeyBindings.PLAY_BURP.isDown()) {
-            ModNetworking.INSTANCE.send(new PacketPlayBurp(), mc.player.connection.getConnection());
+            ModNetworking.sendToServer(new BurpPayload(0.8F, 1.0F));
         }
     }
-
 }

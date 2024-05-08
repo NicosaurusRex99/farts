@@ -1,37 +1,30 @@
 package nicusha.farts.init;
 
-import net.minecraftforge.fml.LogicalSide;
-import net.minecraftforge.network.*;
-import nicusha.farts.*;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
+import net.minecraft.server.level.*;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.network.PacketDistributor;
+import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
+import net.neoforged.neoforge.network.registration.PayloadRegistrar;
+import nicusha.farts.Farts;
 import nicusha.farts.networking.*;
-import net.minecraft.resources.*;
+import nicusha.farts.networking.packets.*;
 
+@EventBusSubscriber(modid = Farts.MODID, bus = EventBusSubscriber.Bus.MOD)
 public class ModNetworking {
-    public static SimpleChannel INSTANCE = ChannelBuilder.named(new ResourceLocation(Farts.MODID, "farts"))
-            .networkProtocolVersion(2)
-            .acceptedVersions((status, version) -> version == 2)
-            .simpleChannel();
 
-    public static <T extends Message<T>> void registerMessage(SimpleChannel channel, int id, Class<T> message) {
-        channel.messageBuilder(message, id)
-                .encoder(Message::toBytes)
-                .decoder(byteBuf -> {
-                    try {
-                        T msg = message.getDeclaredConstructor().newInstance();
-                        return msg.fromBytes(byteBuf);
-                    } catch (Exception e) {
-                        throw new RuntimeException(e);
-                    }
-                })
-                .consumerMainThread((msg, ctx) -> {
-                    LogicalSide side = ctx.getDirection().getReceptionSide();
-                    if (side.equals(LogicalSide.CLIENT)) {
-                        msg.client(ctx);
-                    } else if (side.equals(LogicalSide.SERVER)) {
-                        msg.server(ctx);
-                    }
-                })
-                .add();
+    @SubscribeEvent
+    public static void registerNetworking(final RegisterPayloadHandlersEvent event) {
+        final PayloadRegistrar payloadRegistrar = event.registrar(Farts.MODID);
+
+        payloadRegistrar.playToServer(BurpPayload.TYPE, BurpPayload.STREAM_BURP, BurpPacket.get()::handle);
+        payloadRegistrar.playToServer(FartPayload.TYPE, FartPayload.STREAM_FART, FartPacket.get()::handle);
+    }
+
+    public static void sendToServer(CustomPacketPayload message) {
+        PacketDistributor.sendToServer(message);
     }
 
 }

@@ -1,9 +1,6 @@
 {
-    "pack": {
-        "description": "Farts resources",
-        "pack_format": 18,
-	"forge:resource_pack_format": 15,
-        "forge:data_pack_format": 15,
-        "_comment": ""
-    }
+  "pack": {
+    "description": "Fart resources",
+    "pack_format": 32
+  }
 }
