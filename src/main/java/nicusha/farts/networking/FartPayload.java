@@ -7,7 +7,7 @@ import net.minecraft.resources.ResourceLocation;
 import nicusha.farts.Farts;
 
 public record FartPayload(float pitch, float volume) implements CustomPacketPayload {
-    public static final Type<FartPayload> TYPE = new Type<>(new ResourceLocation(Farts.MODID, "fart_packet"));
+    public static final Type<FartPayload> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(Farts.MODID, "fart_packet"));
 
     @Override
     public Type<FartPayload> type() {

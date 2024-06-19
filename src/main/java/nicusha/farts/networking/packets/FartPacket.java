@@ -13,6 +13,7 @@ import nicusha.farts.networking.*;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.core.Direction;
 
+import javax.annotation.Nullable;
 import java.util.Iterator;
 
 public class FartPacket {
@@ -42,23 +43,22 @@ public class FartPacket {
         return applyBonemeal(player.getItemInHand(player.getUsedItemHand()), level, pos, player);
     }
 
-    public static boolean applyBonemeal(ItemStack stack, Level level, BlockPos pos, Player player) {
-        BlockState blockstate = level.getBlockState(pos);
-        int hook = net.neoforged.neoforge.event.EventHooks.onApplyBonemeal(player, level, pos, blockstate, stack);
-        if (hook != 0) return hook > 0;
-        Block block = blockstate.getBlock();
-        if (block instanceof BonemealableBlock bonemealableblock) {
-            if (bonemealableblock.isValidBonemealTarget(level, pos, blockstate)) {
-                BlockPos abovePos = pos.above();
-                BlockState aboveBlockState = level.getBlockState(abovePos);
-                if (aboveBlockState.isAir() && level instanceof ServerLevel) {
-                    if (bonemealableblock.isBonemealSuccess(level, level.random, pos, blockstate)) {
-                        bonemealableblock.performBonemeal((ServerLevel)level, level.random, pos, blockstate);
-                        return true;
-                    }
+    public static boolean applyBonemeal(ItemStack stack, Level level, BlockPos pos, @Nullable net.minecraft.world.entity.player.Player player) {
+        BlockState state = level.getBlockState(pos);
+        var event = net.neoforged.neoforge.event.EventHooks.fireBonemealEvent(player, level, pos, state, stack);
+        if (event.isCanceled()) return event.isSuccessful();
+        if (state.getBlock() instanceof BonemealableBlock block && block.isValidBonemealTarget(level, pos, state)) {
+            if (level instanceof ServerLevel) {
+                if (block.isBonemealSuccess(level, level.random, pos, state)) {
+                    block.performBonemeal((ServerLevel)level, level.random, pos, state);
                 }
+
+                stack.shrink(1);
             }
+
+            return true;
         }
+
         return false;
     }
 }

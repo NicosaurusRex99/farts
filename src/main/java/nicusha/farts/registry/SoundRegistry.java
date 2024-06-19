@@ -1,11 +1,14 @@
 package nicusha.farts.registry;
 
+
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.*;
-import net.neoforged.neoforge.registries.*;
+import net.minecraft.sounds.SoundEvent;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.List;
 
 import static nicusha.farts.Farts.MODID;
 
@@ -130,6 +133,6 @@ public class SoundRegistry {
     }
 
     private static SoundEvent createSoundEvent(String soundPath) {
-        return SoundEvent.createVariableRangeEvent(new ResourceLocation(MODID, soundPath));
+        return SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(MODID, soundPath));
     }
 }
