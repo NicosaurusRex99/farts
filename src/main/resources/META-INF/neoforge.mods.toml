@@ -1,19 +1,15 @@
-modLoader="javafml" #mandatory
-loaderVersion="${loader_version_range}" #mandatory
-license="${mod_license}"
-issueTrackerURL="https://github.com/NicosaurusRex99/farts/issues" #
+modLoader="javafml"
+loaderVersion="[4,)"
+license="All Rights Reserved"
+issueTrackerURL="https://github.com/NicosaurusRex99/farts/issues"
 
 [[mods]]
-modId="${mod_id}"
-version="${mod_version}"
-displayName="${mod_name}"
+modId="farts"
+version="2.0.2"
+displayName="Farts"
 updateJSONURL="https://raw.githubusercontent.com/NicosaurusRex99/Nicusha-mod-assets/main/farts.json"
 displayURL="https://legacy.curseforge.com/minecraft/mc-mods/farts"
 logoFile="logo.png"
 credits="Thanks P455w0rd for that help with networking!"
-authors="${mod_authors}"
-
-description='''${mod_description}'''
-
-#[[accessTransformers]]
-#file="META-INF/accesstransformer.cfg"
+authors="Nicusha"
+description='''Flatuence. Now with 10% more chunk.'''
