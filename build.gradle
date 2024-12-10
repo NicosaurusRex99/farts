@@ -1,7 +1,7 @@
 plugins {
     id 'java-library'
     id 'maven-publish'
-    id 'net.neoforged.moddev' version '1.0.21'
+    id 'net.neoforged.moddev' version '1.0.23'
 }
 
 tasks.named('wrapper', Wrapper).configure {
@@ -13,6 +13,10 @@ group = mod_group_id
 
 repositories {
     mavenLocal()
+    maven { url "https://maven.shedaniel.me/" }
+    maven { url "https://maven.blamejared.com/" }
+    maven { url "https://modmaven.dev" }
+    maven { url "<https://maven.architectury.dev/>" }
 }
 
 base {
@@ -48,8 +52,8 @@ neoForge {
             systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
         }
 
-        data {
-            data()
+        clientData  {
+            clientData()
             programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
         }
 
@@ -74,6 +78,13 @@ configurations {
 }
 
 dependencies {
+//    compileOnly("mezz.jei:jei-1.21.1-common-api:${jei_version}")
+//    compileOnly("mezz.jei:jei-1.21.1-neoforge-api:${jei_version}")
+//    runtimeOnly("mezz.jei:jei-1.21.1-neoforge:${jei_version}")
+
+//    runtimeOnly("me.shedaniel.cloth:cloth-config-neoforge:$cloth_version")
+//    runtimeOnly("me.shedaniel:RoughlyEnoughItems-api-neoforge:$rei_version")
+//    runtimeOnly("me.shedaniel:RoughlyEnoughItems-default-plugin-neoforge:$rei_version")
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {
