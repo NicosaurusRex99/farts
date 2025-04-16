@@ -5,7 +5,7 @@ issueTrackerURL="https://github.com/NicosaurusRex99/farts/issues"
 
 [[mods]]
 modId="farts"
-version="2.0.2.1"
+version="2.0.2.2"
 displayName="Farts"
 updateJSONURL="https://raw.githubusercontent.com/NicosaurusRex99/Nicusha-mod-assets/main/farts.json"
 displayURL="https://legacy.curseforge.com/minecraft/mc-mods/farts"
