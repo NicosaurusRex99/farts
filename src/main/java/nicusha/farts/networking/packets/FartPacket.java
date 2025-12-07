@@ -25,19 +25,31 @@ public class FartPacket {
 
     public void handle(final FartPayload payload, final IPayloadContext context) {
         context.enqueueWork(() -> {
-            Player player = context.player();
-            Level world = player.level();
-            world.playSound(null, player.blockPosition(), FartUtils.getRandomFart(world.random), SoundSource.PLAYERS, payload.pitch(), payload.volume());
+            if (!context.player().level().isClientSide()) {
+                Player player = context.player();
+                Level world = player.level();
 
-            Iterator<BlockPos> iterator = BlockPos.betweenClosed(player.blockPosition().offset(-3, -2, -3), player.blockPosition().offset(3, 2, 3)).iterator();
-            while (iterator.hasNext()) {
-                BlockPos p = iterator.next();
-                if(player.mayUseItemAt(p.below(2), Direction.DOWN, null)){
-                    growCrop(player, world, p.below(2));
+                world.playSound(player, player.blockPosition(),
+                        FartUtils.getRandomFart(world.random),
+                        SoundSource.PLAYERS,
+                        payload.pitch(),
+                        payload.volume());
+
+                Iterator<BlockPos> iterator = BlockPos.betweenClosed(
+                                player.blockPosition().offset(-3, -2, -3),
+                                player.blockPosition().offset(3, 2, 3))
+                        .iterator();
+
+                while (iterator.hasNext()) {
+                    BlockPos p = iterator.next();
+                    if(player.mayUseItemAt(p.below(2), Direction.DOWN, null)){
+                        growCrop(player, world, p.below(2));
+                    }
                 }
             }
         });
     }
+
 
     public static boolean growCrop(Player player, Level level, BlockPos pos) {
         return applyBonemeal(player.getItemInHand(player.getUsedItemHand()), level, pos, player);
@@ -52,8 +64,6 @@ public class FartPacket {
                 if (block.isBonemealSuccess(level, level.random, pos, state)) {
                     block.performBonemeal((ServerLevel)level, level.random, pos, state);
                 }
-
-                stack.shrink(1);
             }
 
             return true;
