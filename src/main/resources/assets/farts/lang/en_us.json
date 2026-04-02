@@ -1,7 +1,7 @@
 {
-    "farts.subtitle.fartsound": "Farts",
-    "keys.categories.farts": "Farts Mod",
+    "key.categories.farts.farts": "Farts Mod",
     "key.fart": "Farts",
     "key.burp": "Burps",
+    "farts.subtitle.fartsound": "Farts",
     "farts.subtitle.burpsound": "Burps"
 }

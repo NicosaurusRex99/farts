@@ -5,6 +5,7 @@ import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.server.level.*;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.network.ClientPacketDistributor;
 import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
@@ -12,7 +13,7 @@ import nicusha.farts.Farts;
 import nicusha.farts.networking.*;
 import nicusha.farts.networking.packets.*;
 
-@EventBusSubscriber(modid = Farts.MODID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber
 public class ModNetworking {
 
     @SubscribeEvent
@@ -24,7 +25,7 @@ public class ModNetworking {
     }
 
     public static void sendToServer(CustomPacketPayload message) {
-        PacketDistributor.sendToServer(message);
+        ClientPacketDistributor.sendToServer(message);
     }
 
 }

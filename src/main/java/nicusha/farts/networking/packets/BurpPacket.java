@@ -18,7 +18,7 @@ public class BurpPacket {
         context.enqueueWork(() -> {
             Player player = context.player();
             Level world = player.level();
-            world.playSound(null, player.blockPosition(), FartUtils.getRandomBurp(world.random), SoundSource.PLAYERS, payload.pitch(), payload.volume());
+            world.playSound(null, player.blockPosition(), FartUtils.getRandomBurp(world.getRandom()), SoundSource.PLAYERS, payload.pitch(), payload.volume());
         });
     }
 }
