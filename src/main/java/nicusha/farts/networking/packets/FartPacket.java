@@ -7,6 +7,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.event.EventHooks;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import nicusha.farts.FartUtils;
 import nicusha.farts.networking.*;
@@ -44,7 +45,7 @@ public class FartPacket {
 
     public static boolean applyBonemeal(ItemStack stack, Level level, BlockPos pos, @Nullable Player player) {
         BlockState state = level.getBlockState(pos);
-        var event = net.neoforged.neoforge.event.EventHooks.fireBonemealEvent(player, level, pos, state, stack);
+        var event = EventHooks.fireBonemealEvent(player, level, pos, state, stack);
         if (event.isCanceled()) return event.isSuccessful();
         if (state.getBlock() instanceof BonemealableBlock block && block.isValidBonemealTarget(level, pos, state)) {
             if (level instanceof ServerLevel serverLevel) {
